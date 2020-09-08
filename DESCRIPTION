@@ -1,0 +1,21 @@
+Package: recan
+Type: Package
+Title: R package to Explore and Discover Recombination Events in Viral Genomes
+Version: 0.99.0
+Author: 
+  c(person(given = "Vasily",
+  family = "Pavelko",
+  role = c("aut", "cre"),
+  email = "greegorov0@gmail.com",
+  comment = "ORCID: 0000-0001-8142-1621"))
+Maintainer: Vasily Pavelko <greegorov0@gmail.com>
+Description: recan is a R package which allows to construct genetic distance plots to explore and discover recombination events in viral genomes. This method has been previously implemented in desktop software tools: RAT, Simplot and RDP4.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends:
+  R (>= 3.5.0),
+  Biostrings,
+  plotly,
+  dplyr
+RoxygenNote: 7.1.1
