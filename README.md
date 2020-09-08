@@ -1,6 +1,6 @@
 # recan
 ported version of recan Python library https://github.com/babinyurii/recan for genetic distance plotting for recombination events analysis
-## Requements
+## Requirements
 ***
 R  
 Biostrings  
@@ -10,11 +10,16 @@ dplyr
 
 ## Instalation
 ***
-To install the package  
-install.package
+To install the package
+'''
+install.packages("devtools")
+library(devtools)
+devtools::install_github("vasily-pavelko/recan")
+'''
 
 ## Usage example
 ***
+library(recan)
 ## Example datasets
 ***
 To download the datasets use the following link: https://drive.google.com/drive/folders/1v2lg5yUDFw_fgSiulsA1uFeuzoGz0RjH?usp=sharing
