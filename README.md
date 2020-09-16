@@ -1,7 +1,7 @@
 ---
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 # recan
 Ported version of recan Python library https://github.com/babinyurii/recan for genetic distance plotting for recombination events analysis.   
@@ -54,8 +54,6 @@ The isolate of Ba genotype is the recombinant between the virus of C genotype an
 library(recan)
 seqSim(seq)
 ```
-
- 
 
 ## Example datasets
 ***
