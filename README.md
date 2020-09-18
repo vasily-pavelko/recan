@@ -4,8 +4,7 @@ output:
   pdf_document: default
 ---
 # recan
-Ported version of recan Python library https://github.com/babinyurii/recan for genetic distance plotting for recombination events analysis.   
-
+ported version of recan Python library https://github.com/babinyurii/recan for genetic distance plotting for recombination events analysis
 ## Requirements
 ***
 R  
@@ -48,12 +47,13 @@ window: sliding window size. The number of nucleotides the sliding window will s
 shift: this is the step our window slides downstream the alignment. It's value is set to 50 by default.  
 region: the index of the potential recombinant. All the other sequences will be plotted as function of distance to that sequence.  
 Load recan package and use seqSim() function to the seq object.  
-The isolate of Ba genotype is the recombinant between the virus of C genotype and genotype Bj. Let's plot it. We set genotype Ba as the potential recombinant:  
-
-```{r}
+The isolate of Ba genotype is the recombinant between the virus of C genotype and genotype Bj. Let's plot it. We set genotype Ba as the potential recombinant :
+```
 library(recan)
 seqSim(seq)
+
 ```
+hist(seqSim_data[,2])
 
 ## Example datasets
 ***
