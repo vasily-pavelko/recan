@@ -1,8 +1,4 @@
----
-output:
-  html_document: default
-  pdf_document: default
----
+
 # recan
 ported version of recan Python library https://github.com/babinyurii/recan for genetic distance plotting for recombination events analysis
 ## Requirements
@@ -24,7 +20,7 @@ devtools::install_github("vasily-pavelko/recan")
 
 ## Usage example
 ***
-Read multiple sequances alignment file
+Read multiple sequences alignment file
 ```
 seq <- readBStringSet("hbv_C_Bj_Ba.fasta",  "fasta")
 ```
@@ -53,7 +49,7 @@ library(recan)
 seqSim(seq)
 
 ```
-hist(seqSim_data[,2])
+![hbv_C_Bj_Ba](plots/hbv_C_Bj_Ba.png)
 
 ## Example datasets
 ***
