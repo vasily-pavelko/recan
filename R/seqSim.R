@@ -24,23 +24,36 @@
 #' @export
 
 seqSim <- function(seq, ref = 1, shift = 50, window = 200, region = c(0, 0)) {
-
+  #error output
+  if  (region[1] >= region[2]) {
+    stop("The value of the first nucleotide position should be less than the second one")
+  } else if (shift <= 0) {
+    stop("shift  parameter can't be a negative or zero")
+  } else if (window <= 0) {
+    stop("window parameter can't be a negative or zero")
+  } else if (ref > length(seq)) {
+    stop("index of reference sequence is out of number of sequences in your alighment")
+  } else if (length(seq) < 3) {
+    stop("alighment containes less then 3 sequences")
+  }
+  #if else condition if full length sequence is used for plot
   if (sum(region) == 0)
   {
-    #steps for subsetting
+    #create vector with initial position for subsetting in the length of the input sequence
     start_positions <- seq(from = 1, to = length(seq$ali[1,]), by = shift)
-    #for full-length sequences
+    #choose steps which are produced a full length window
     start_positions_full <- start_positions[start_positions<length(seq$ali[1,])-window]
-    #for sequences in the end, they are partial, less then window
+    #choose steps in the end of the sequences, which are produced only partial subsequence
     start_positions_part <- start_positions[start_positions>=length(seq$ali[1,])-window]
     start_positions_part <- start_positions_part[start_positions_part != length(seq$ali[1,])]
   } else {
-    #steps for subsetting
+    # create vector with initial position for subsetting in the length of the input sequence
     start_positions <- seq(from = region[1], to = region[2], by = shift)
-    #for full-length sequences
+    #choose steps which are produced a full length window
     start_positions_full <- start_positions[start_positions<region[2]-window]
-    #for sequences in the end, they are partial, less then window
+    #choose steps closer to the end of the sequences, which are produced subsequence shorter then window
     start_positions_part <- start_positions[start_positions>=region[2]-window]
+    #test, if last element of start_position matches the end of the sequences
     start_positions_part <- start_positions_part[start_positions_part != region[2]]
   }
   start_positions <- append(start_positions_full, start_positions_part)
@@ -66,6 +79,11 @@ seqSim <- function(seq, ref = 1, shift = 50, window = 200, region = c(0, 0)) {
   }
   fig <- fig %>% layout(xaxis = list(title = "Nucleotide position"),
                         yaxis = list (title = "Sequence identity"))
+  #check are arguments good enough to draw plot
+  if (length(seqSim_data[1, ]) < 2) {
+    stop("too little elements in the output dataframe")
+  }
   fig
+
 }
 

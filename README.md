@@ -32,13 +32,13 @@ seq$id
 ```{r}
 [1] "AB048704.1_genotype_C_" "AB033555.1_Ba"          "AB010291.1_Bj"         
 ```
-We have three sequences in our alignment. Fasta class is created with read.fasta function from the bio3d library. Index corresponds to the sequence. After you've created the object you can draw the similarity plot. Call the method seqSim() of the fasta object to draw the plot. Pass the following parameters to the method:
+We have three sequences in our alignment. Fasta class is created with read.fasta function from the bio3d library. Index corresponds to the sequence. After you've created the object you can draw the similarity plot. Call the method `seqSim()` of the fasta object to draw the plot. Pass the following parameters to the method:
 
-ref: determine which sequence will be the referent. Similarity of other sequences will be calculated comparing with it.
-window: sliding window size. The number of nucleotides the sliding window will span. It has the value of 200 by default.  
-shift: this is the step our window slides downstream the alignment. It's value is set to 50 by default.  
-region: the index of the potential recombinant. All the other sequences will be plotted as function of distance to that sequence.  
-Load recan package and use seqSim() function to the seq object.  
+`ref`: determine which sequence will be the referent. Similarity of other sequences will be calculated comparing with it.
+`window`: sliding window size. The number of nucleotides the sliding window will span. It has the value of 200 by default.  
+`shift`: this is the step our window slides downstream the alignment. It's value is set to 50 by default.  
+`region`: the index of the potential recombinant. All the other sequences will be plotted as function of distance to that sequence.  
+Load `recan` package and use `seqSim()` function to the seq object.  
 The isolate of Ba genotype is the recombinant between the virus of C genotype and genotype Bj. Let's plot it. We set genotype Ba as the potential recombinant :
 ```
 library(recan)
@@ -50,16 +50,16 @@ seqSim(seq, ref = 2)
 
 Potential recombinant is not shown in the plot, as the distances are calculated relative to it. The higher is the distance function (i.e. the closer to 1), the closer is the sequence to the recombinant and vice versa.
 We can see typical 'crossover' of the distances which is the indicator of the possible recombination event. The distance of one isolate 'drops down' whereas the distance of the other remains the same of even gets closer to the potential recombinant, this abrupt drop shows that recombination could take place.
-The picture from the article is shown below. It's just turned upside down relative to our plot, and instead of distance drop we see distance rising. Here Bj 'goes away' from the genotype C, whereas Ba keeps the same distance
+The figure from the article is shown below. It's just turned upside down relative to our plot, and instead of distance drop we see distance rising. Here Bj 'goes away' from the genotype C, whereas Ba keeps the same distance
 ![](plots/hbv_C_Bj_Ba.png)
 
-By default simgen() method plots the whole alignment. But after initial exploration, we can take a closer look at a particular region by passing the region parameter to the simgen method. We can slice the alignment by using this parameter. region must be a tuple or a list with two integers: the start and the end position of the alignment slice.
+By default `seqSim()` method plots the whole alignment. But after initial exploration, we can take a closer look at a particular region by passing the region parameter to the simgen method. We can slice the alignment by using this parameter. region must be a tuple or a list with two integers: the start and the end position of the alignment slice.
 ```
 seqSim(seq, ref = 2, region = c(1000, 2700))
 ```
 ![](plots/hbv_slice_1.png)
 
-To customize the plot or just to export and store the data, use object seqSim_data. seqSim_data returns matrix object with sequences as samples, and distances at given points as features.
+To customize the plot or just to export and store the data, use object `seqSim_data`. seqSim_data returns matrix object with sequences as samples, and distances at given points as features.
 ```
 head(seqSim_data)
 ```
@@ -90,7 +90,7 @@ fig
 ```
 ![](plots/hbv_slice_1.png)
 
-to save the distance data in excel or csv format use the method save_data():
+to save the distance data in excel or csv format use the method `write.csv`:
 ```
 write.csv(seqSim_data, file = "hbv_distance_data")
 ```
@@ -115,5 +115,6 @@ To download the datasets use the following link: https://drive.google.com/drive/
 ***
 1. Recombination Analysis Tool (RAT): a program for the high-throughput detection of recombination. Bioinformatics, Volume 21, Issue 3, 1 February 2005, Pages 278–281, https://doi.org/10.1093/bioinformatics/bth500
 https://sray.med.som.jhmi.edu/SCRoftware/simplot/
-2. Sprygin A, Babin Y, Pestova Y, Kononova S, Wallace DB, Van Schalkwyk A, et al. (2018) Analysis and insights into recombination signals in lumpy skin disease virus recovered in the field. PLoS ONE 13(12): e0207480. https://doi.org/ 10.1371/journal.pone.0207480
+2. https://sray.med.som.jhmi.edu/SCRoftware/simplot/
+3. Sprygin A, Babin Y, Pestova Y, Kononova S, Wallace DB, Van Schalkwyk A, et al. (2018) Analysis and insights into recombination signals in lumpy skin disease virus recovered in the field. PLoS ONE 13(12): e0207480. https://doi.org/ 10.1371/journal.pone.0207480
 
