@@ -98,13 +98,43 @@ If there are about 20 or 30 sequences in the input file and their names are long
 
 ![](plots/short_names.png)
 
-To illustrate how typical breakpoints may look like, here are shown some examples of previously described recombinations in the genomes of different viruses. The fasta alignments used are available at datasets folder.
+To illustrate how typical breakpoints may look, here are shown some examples of previously described recombinations in the genomes of different viruses. The fasta alignments used are available at dataset folder.
 
 Recombination in HIV genome [5]:
 ![](plots/hcv_2k_1b_rec.png)
 
 Norovirus recombinant isolate [7]:
 ![](plots/norovirus_rec.png)
+
+For alignments with huge number of sequences a function scanSeqSim() can be applied. This function takes multiple alignment in `bio3d` fasta format. You should define a reference sequence, against which all other sequence similarities will be calculated. Then, for the each pair of sequence similarities function builds the plot and find the possible recombination regions. The start and the end of each region save as a matrix.
+You can show results in `data_scan` data.frame
+
+```
+data_scan
+```
+```
+     number_seq1 name_seq1                number_seq2 name_seq2      
+[1,] 1           "AB048704.1_genotype_C_" 3           "AB010291.1_Bj"
+     plots_rec_lines region_recomb_bp
+[1,] List,8          Numeric,2 
+```
+Print plot.
+```
+data_scan[,5]
+```
+![](plots/hbv_scanSecSim.png)
+
+And recombination region matrix.
+
+```
+data_scan[,6]
+```
+```
+$region_recomb_bp
+     [,1]
+[1,] 1851
+[2,] 2051
+```
 
 
 ## Example datasets

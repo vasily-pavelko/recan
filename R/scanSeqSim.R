@@ -157,9 +157,15 @@ scanSeqSim <- function(seq, ref = 1, shift = 50, window = 200, threshold = 0.05,
   name_seq1 <- seq_names[number_seq1]
   number_seq2 <- combinations[2,]
   name_seq2 <- seq_names[number_seq2]
+  if (length(number_seq1) == 1) {
+    plots_rec_lines_list <- list(plots_rec_lines)
+    region_recomb_bp_list <- list(region_recomb_bp)
+  } else {
+    plots_rec_lines_list <- plots_rec_lines
+    region_recomb_bp_list <- region_recomb_bp
+    }
   data_recomb <- data.frame()
-  data_recomb <- cbind(number_seq1, name_seq1, number_seq2, name_seq2, plots_rec_lines,
-                       region_recomb_bp)
+  data_recomb <- cbind(number_seq1, name_seq1, number_seq2, name_seq2, plots_rec_lines_list, region_recomb_bp_list)
   assign("data_scan", data_recomb, envir = .GlobalEnv)
 }
 
