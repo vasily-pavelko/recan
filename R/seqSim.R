@@ -25,7 +25,7 @@
 
 seqSim <- function(seq, ref = 1, shift = 50, window = 200, region = c(0, 0)) {
   #error output
-  if  (region[1] >= region[2]) {
+  if  (region[1] > region[2]) {
     stop("The value of the first nucleotide position should be less than the second one")
   } else if (shift <= 0) {
     stop("shift  parameter can't be a negative or zero")

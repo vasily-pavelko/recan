@@ -44,7 +44,7 @@ data_scan
 data_scan[1, ]
 #Prints all recombination plots
 data_scan[ ,5]
-#Print all recombinations regions
+#Print all regions of recombination
 data_scan[ ,6]
 
 }

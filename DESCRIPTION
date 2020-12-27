@@ -17,5 +17,6 @@ Depends:
   R (>= 3.5.0),
   bio3d,
   plotly,
-  dplyr
+  dplyr,
+  combinat
 RoxygenNote: 7.1.1

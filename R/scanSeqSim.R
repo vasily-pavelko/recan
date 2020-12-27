@@ -22,7 +22,7 @@
 #' data_scan[1, ]
 #' #Prints all recombination plots
 #' data_scan[ ,5]
-#' #Print all recombinations regions
+#' #Print all regions of recombination
 #' data_scan[ ,6]
 #'
 #' @importFrom bio3d seqidentity
@@ -120,13 +120,11 @@ scanSeqSim <- function(seq, ref = 1, shift = 50, window = 200, threshold = 0.05,
               name = colnames(seq_sim_mat)[pair[[2]]],
               type = 'scatter',
               mode = 'lines')
-
   }
 
   list_scan_plots <- apply(combinations, MARGIN = 2, combine_plots)
 
   #add red lines
-
   counter <<- 0
   plot_list <- function(matrices) {
     counter <<- counter + 1
@@ -136,10 +134,13 @@ scanSeqSim <- function(seq, ref = 1, shift = 50, window = 200, threshold = 0.05,
     fig_rec_detect <- list_scan_plots[[counter]]
     for (i in 1:length(matrix)) {
       fig_rec_detect <- add_segments(fig_rec_detect,
-                                     x = matrix[[i]], xend = matrix[[i]], color = I("red"),
+                                     x = matrix[[i]],
+                                     xend = matrix[[i]],
+                                     color = I("red"),
                                      y = min(seqSim_data[ ,combinations[1, counter]],
                                              seqSim_data[ ,combinations[2, counter]]),
-                                     yend = 1, line = list(dash = "dash"),
+                                     yend = 1,
+                                     line = list(dash = "dash"),
                                      showlegend = FALSE)
     }
     fig_rec_detect
