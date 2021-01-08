@@ -31,7 +31,7 @@ seqSim <- function(seq, ref = 1, shift = 50, window = 200, region = c(0, 0)) {
     stop("shift  parameter can't be a negative or zero")
   } else if (window <= 0) {
     stop("window parameter can't be a negative or zero")
-  } else if (ref > length(seq)) {
+  } else if (ref > length(seq$id)) {
     stop("index of reference sequence is out of number of sequences in your alighment")
   } else if (length(seq) < 3) {
     stop("alighment containes less then 3 sequences")

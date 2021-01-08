@@ -4,7 +4,8 @@ ported version of recan Python library https://github.com/babinyurii/recan for g
 ## Requirements
 ***
 R  
-Biostrings  
+bio3d 
+combinat   
 plotly  
 dplyr  
 
@@ -79,7 +80,12 @@ fig <- plot_ly()
 ref = 2
 index <- c(1:ncol(seqSim_data))[c(1:ncol(seqSim_data)) != ref]
 for (l in index) {
-  fig <- add_trace(fig, y=seqSim_data[,l], x=seqSim_data[,ref], name = colnames(seqSim_data)[l], type = 'scatter', mode = 'lines')
+  fig <- add_trace(fig, 
+  y=seqSim_data[,l], 
+  x=seqSim_data[,ref], 
+  name = colnames(seqSim_data)[l], 
+  type = 'scatter', 
+  mode = 'lines')
 }
 fig <- fig %>% layout(xaxis = list(title = "Nucleotide position"),
                       yaxis = list (title = "Sequence identity"))
@@ -106,11 +112,11 @@ Recombination in HIV genome [5]:
 Norovirus recombinant isolate [7]:
 ![](plots/norovirus_rec.png)
 
-For alignments with huge number of sequences a function scanSeqSim() can be applied. This function takes multiple alignment in `bio3d` fasta format. You should define a reference sequence, against which all other sequence similarities will be calculated. Then, for the each pair of sequence similarities function builds the plot and find the possible recombination regions. The start and the end of each region save as a matrix.
-You can show results in `data_scan` data.frame
+For alignments with huge number of sequences a function `scanSeqSim()` can be applied. This function takes multiple alignment in `bio3d` fasta format. You should define a reference sequence, against which all other sequence similarities will be calculated. Then, for the each pair of sequence similarities function builds the plot and find the possible recombination regions. The start and the end of each region save as a matrix.
+You can show results in `scan_data` data.frame
 
 ```
-data_scan
+scan_data
 ```
 ```
      number_seq1 name_seq1                number_seq2 name_seq2      
@@ -120,14 +126,12 @@ data_scan
 ```
 Print plot.
 ```
-data_scan[,5]
+scan_data[,5]
 ```
 ![](plots/hbv_scanSecSim.png)
-
 And recombination region matrix.
-
 ```
-data_scan[,6]
+scan_data[,6]
 ```
 ```
 $region_recomb_bp

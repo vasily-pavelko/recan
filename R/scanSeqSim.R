@@ -9,8 +9,8 @@
 #'
 #' @param seq as input we use fasta object from bio3d package. It is a multiple sequence alignment of three or more sequences.
 #' @param ref is a sequence which is used for sequences similarity calculation.
-#' @param shift the step our window slides downstream the alignment. Its value is set to 200 by default
-#' @param window sliding window size. The number of nucleotides the sliding window will span. It has the value of 50 by default.
+#' @param shift the step our window slides downstream the alignment. Its value is set to 400 by default
+#' @param window sliding window size. The number of nucleotides the sliding window will span. It has the value of 200 by default.
 #' @param threshold value which reduce number of false-positive detected recombination events.
 #' @param rec_length length of recombination. Minimal length of 'cross-over'. Expressed in number of shifts.
 #' @param rec_detect logical value for adding red line of recombination to the plots.
@@ -33,8 +33,8 @@
 #' @importFrom combinat combn
 #' @export
 
-scanSeqSim <- function(seq, ref = 1, shift = 50, window = 200, threshold = 0.05,
-                       rec_length = 3, rec_detect = TRUE) {
+scanSeqSim <- function(seq, ref = 1, shift = 200, window = 400, threshold = 0.05,
+                       rec_length = 3, rec_detect = FALSE) {
   #error output
   if (shift <= 0) {
     stop("shift parameter can't be a negative or zero")
@@ -125,31 +125,39 @@ scanSeqSim <- function(seq, ref = 1, shift = 50, window = 200, threshold = 0.05,
   list_scan_plots <- apply(combinations, MARGIN = 2, combine_plots)
 
   #add red lines
-  counter <<- 0
-  plot_list <- function(matrices) {
-    counter <<- counter + 1
-    plot_matrix(matrices)
-  }
-  plot_matrix <- function(matrix) {
-    fig_rec_detect <- list_scan_plots[[counter]]
-    for (i in 1:length(matrix)) {
-      fig_rec_detect <- add_segments(fig_rec_detect,
-                                     x = matrix[[i]],
-                                     xend = matrix[[i]],
-                                     color = I("red"),
-                                     y = min(seqSim_data[ ,combinations[1, counter]],
-                                             seqSim_data[ ,combinations[2, counter]]),
-                                     yend = 1,
-                                     line = list(dash = "dash"),
-                                     showlegend = FALSE)
+  if (rec_detect == TRUE) {
+    counter <<- 0
+    plot_list <- function(matrices) {
+      counter <<- counter + 1
+      plot_matrix(matrices)
     }
-    fig_rec_detect
-  }
-  if (is.null(dim(region_recomb_bp))) {
-    plots_rec_lines <- lapply(region_recomb_bp, plot_list)
-  } else if  (dim(region_recomb_bp)[2] == 1) {
-    counter <<- 1
-    plots_rec_lines <- plot_matrix(region_recomb_bp)
+    plot_matrix <- function(matrix) {
+      fig_rec_detect <- list_scan_plots[[counter]]
+      for (i in 1:length(matrix)) {
+        if (matrix[[i]] == 0) {
+        } else {
+          fig_rec_detect <- add_segments(fig_rec_detect,
+                                         x = matrix[[i]],
+                                         xend = matrix[[i]],
+                                         color = I("red"),
+                                         y = min(seqSim_data[ ,combinations[1, counter]],
+                                                 seqSim_data[ ,combinations[2, counter]]),
+                                         yend = 1,
+                                         line = list(dash = "dash"),
+                                         showlegend = FALSE)
+        }
+
+      }
+      fig_rec_detect
+    }
+    if (is.null(dim(region_recomb_bp))) {
+      plots_rec_lines <- lapply(region_recomb_bp, plot_list)
+    } else if  (dim(region_recomb_bp)[2] == 1) {
+      counter <<- 1
+      plots_rec_lines <- plot_matrix(region_recomb_bp)
+    }
+  } else {
+    plots_rec_lines <- list_scan_plots
   }
   #combine matrix
   number_seq1 <- combinations[1,]
