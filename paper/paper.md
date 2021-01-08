@@ -21,14 +21,6 @@ bibliography: references.bib
 
 # Statement of need
 Nowadays the pandemic of SARS-COV-2 virus attracts attention to viral diseases and the evolution of its agents. Detection of recombinations is more reproducible to perform in an automatic pipeline, rather than use GUI [@Etherington2005; @Lole1999]. As R language [@R2018] is more widely used by biologists I ported `recan` package from Python to R.
-
-#The user can change parameters for seqSim function: the sequence that is used for similarity calculation, the sliding window size, the window shift, and a region of interest (to plot only an area where breakpoints occur). 
-
-#HCV_all_seq
-
-#But if there is a lot of sequences in alignment it is difficult to find exact recombination. For nice looking picture it is required to exclude unnecessary lines.
-
-#HCV_2_seq
 Another package `seqcombo` provides the same analysis [@Yu2021]. It is important that data with genetic distances for further investigations are available in our package. Using `plotly` library for visualization data allows to exclude redundant plot lines from figure. A new function `scanSeqSim` for searching areas of recombination was added. In `scanSeqSim` you can adjust threshold value and recombination length the minimal number of points  in ‘cross-over’ expressed in the number of the sliding windows for reducing a number of false-positively detected recombination areas.  
 
 # Testing and verification
@@ -47,10 +39,10 @@ Table 1. Benchmarking of python and R version of recan package
 Time execution test was performed using a laptop with 2 CPU cores and 8 Gb RAM.
 With `scanSeqSim` function, `recan` can be used to identify and analyze recombination events in a large subset of sequences in separated plots. A set of SARS-CoV-2 full genome sequences was used to probe this function [@Paraskevis2020].
 The distance plots with recombination events detected by `seqSim` and `scanSeqSim` are shown in Figures 1-2.
-![](https://raw.githubusercontent.com/babinyurii/recan/master/paper_plots/lsdv_rec_sar.png)
+![](https://github.com/vasily-pavelko/recan/blob/master/paper/SARS_COV_2_all.png)
 _Figure 1. SARS-CoV-2 sequences._
 
-![](https://raw.githubusercontent.com/babinyurii/recan/master/paper_plots/lsdv_rec_sar.png)
+![](https://github.com/vasily-pavelko/recan/blob/master/paper/SARS_COV_2_%2315.png)
 _Figure 2. Example of scanSecSim function for SARS-CoV-2 sequences._
 
 
