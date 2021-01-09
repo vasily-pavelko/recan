@@ -39,10 +39,10 @@ Table 1. Benchmarking of python and R version of recan package
 Time execution test was performed using a laptop with 2 CPU cores and 8 Gb RAM.
 With the `scanSeqSim` function, `recan` can be used to identify and analyze recombination events in a large subset of sequences in separated plots. A set of SARS-CoV-2 full genome sequences was used to probe this function [@Paraskevis2020].
 The distance plots with recombination events detected by `seqSim` and `scanSeqSim` are shown in Figures 1-2.
-![](https://github.com/vasily-pavelko/recan/blob/master/plots_paper/SARS_COV_2_all.jpg)
+![](https://raw.githubusercontent.com/vasily-pavelko/recan/master/plots_paper/SARS_COV_2_all.jpg)
 _Figure 1. SARS-CoV-2 sequences._
 
-![](https://github.com/vasily-pavelko/recan/blob/master/plots_paper/SARS_COV_2_%2315.jpg)
+![](https://raw.githubusercontent.com/vasily-pavelko/recan/master/plots_paper/SARS_COV_2_%2315.jpg)
 _Figure 2. Example of scanSecSim function for SARS-CoV-2 sequences._
 
 
