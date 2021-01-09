@@ -7,11 +7,11 @@
 scanSeqSim(
   seq,
   ref = 1,
-  shift = 50,
-  window = 200,
+  shift = 200,
+  window = 400,
   threshold = 0.05,
   rec_length = 3,
-  rec_detect = TRUE
+  rec_detect = FALSE
 )
 }
 \arguments{
@@ -19,9 +19,9 @@ scanSeqSim(
 
 \item{ref}{is a sequence which is used for sequences similarity calculation.}
 
-\item{shift}{the step our window slides downstream the alignment. Its value is set to 200 by default}
+\item{shift}{the step our window slides downstream the alignment. Its value is set to 400 by default}
 
-\item{window}{sliding window size. The number of nucleotides the sliding window will span. It has the value of 50 by default.}
+\item{window}{sliding window size. The number of nucleotides the sliding window will span. It has the value of 200 by default.}
 
 \item{threshold}{value which reduce number of false-positive detected recombination events.}
 
