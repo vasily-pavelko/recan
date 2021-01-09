@@ -27,14 +27,14 @@ Another package `seqcombo` provides the same analysis [@Yu2021]. In my package d
 To test the package, we used the same four sets of viral genomes from the article with a description of the Python version of `recan` [@Babin2020].
 The resulting `seqSim` method execution time with the window size = 400 and shift parameters = 200 showed in table 1. Both R packages are faster than the Python version.
 
-Table 1. Benchmarking of python and R version of recan package
+Table 1. Benchmarking of python and R packages for recombination analysis (SD in brackets).
 
-|           | number of sequences |   bp   |   recan python   |      recan R     |     seqcombo R     |
-|:---------:|:-------------------:|:------:|:----------------:|:----------------:|:------------------:|
-|    HIV    |          25         |  3135  | 437 ms ± 7.74 ms | 152 ms ± 13.9 ms |  116 ms ± 16.6 ms  |
-|    HCV    |          23         |  9431  | 579 ms ± 58.7 ms | 437 ms ± 63.5 ms | 132.8 ms ± 16.7 ms |
-| Norovirus |          19         |  3366  | 648 ms ± 44.2 ms |  98 ms ± 6,42 ms |  94.1 ms ± 19.7 ms |
-|    LSDV   |          14         | 150511 |  3.55 s ± 239 ms |  2.63 s ± 570 ms | 391.4 ms ± 40.2 ms |
+|           | number of  sequences |   bp   | recan python, ms | recan R, ms | seqcombo R, ms |
+|:---------:|:--------------------:|:------:|:----------------:|:-----------:|:--------------:|
+|    HIV    |          25          |  3135  |    437 (7.74)    |  152 (13.9) |   116 (16.6)   |
+|    HCV    |          23          |  9431  |    579 (58.7)    |  437 (63.5) |  132.8 (16.7)  |
+| Norovirus |          19          |  3366  |    648 (44.2)    | 98.5 (6.42) |   94.1 (19.7)  |
+|    LSDV   |          14          | 150511 |    3558 (239)    |  2636 (570) |   391 (40.2)   |
 
 Time execution test was performed using a laptop with 2 CPU cores and 8 Gb RAM.
 With the `scanSeqSim` function, `recan` can be used to identify and analyze recombination events in a large subset of sequences in separated plots. A set of SARS-CoV-2 full genome sequences was used to probe this function [@Paraskevis2020].
