@@ -18,5 +18,6 @@ Depends:
   bio3d,
   plotly,
   dplyr,
-  combinat
+  combinat,
+  testthat
 RoxygenNote: 7.1.1
