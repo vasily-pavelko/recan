@@ -19,5 +19,5 @@ Depends:
   plotly,
   dplyr,
   combinat,
-  testthat
+  testthat 
 RoxygenNote: 7.1.1
