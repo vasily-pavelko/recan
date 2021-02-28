@@ -1,7 +1,7 @@
 Package: recan
 Type: Package
 Title: R package to Explore and Discover Recombination Events in Viral Genomes
-Version: 0.99.0
+Version: 0.0.0.9000
 Author: 
   c(person(given = "Vasily",
   family = "Pavelko",
@@ -13,11 +13,14 @@ Description: recan is a R package which allows to construct genetic distance plo
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/vasily-pavelko/recan
+BugReports: https://github.com/vasily-pavelko/recan/issues
 Depends:
-  R (>= 3.5.0),
+  R (>= 3.5.0)
+Imports:
   bio3d,
   plotly,
   dplyr,
-  combinat,
-  testthat 
+  testthat,
+  combinat
 RoxygenNote: 7.1.1

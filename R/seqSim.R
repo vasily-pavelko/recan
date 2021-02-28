@@ -69,18 +69,22 @@ seqSim <- function(seq, ref = 1, shift = 50, window = 200, region = c(0, 0)) {
   seq_sim_mat <- do.call(rbind, seq_sim_vec)
   seq_sim_mat[,ref] <- start_positions
   colnames(seq_sim_mat)[ref] <- "start_positions"
+  seq_sim_mat <- t(seq_sim_mat)
   assign("seqSim_data", seq_sim_mat, envir = .GlobalEnv)
 
   fig <- plot_ly()
-  index <- c(1:ncol(seq_sim_mat))[c(1:ncol(seq_sim_mat)) != ref]
+  index <- c(1:nrow(seq_sim_mat))[c(1:nrow(seq_sim_mat)) != ref]
   for (l in index) {
-    fig <- add_trace(fig, y=seq_sim_mat[,l], x=seq_sim_mat[,ref], name = colnames(seq_sim_mat)[l],
+    fig <- add_trace(fig,
+                     y=seq_sim_mat[l,],
+                     x=seq_sim_mat[ref,],
+                     name = rownames(seq_sim_mat)[l],
                      type = 'scatter', mode = 'lines')
   }
   fig <- fig %>% layout(xaxis = list(title = "Nucleotide position"),
                         yaxis = list (title = "Sequence identity"))
   #check are arguments good enough to draw plot
-  if (length(seqSim_data[1, ]) < 2) {
+  if (length(seqSim_data[, 1]) < 2) {
     stop("too little elements in the output dataframe")
   }
   fig

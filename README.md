@@ -35,7 +35,7 @@ seq$id
 ```
 We have three sequences in our alignment. Fasta class is created with read.fasta function from the bio3d library. Index corresponds to the sequence. After you've created the object you can draw the similarity plot. Call the method `seqSim()` of the fasta object to draw the plot. Pass the following parameters to the method:
 
-`ref`: determine which sequence will be the referent. Similarity of other sequences will be calculated comparing with it.
+`ref`: determine which sequence will be the referent. Similarity of other sequences will be calculated comparing with it.   
 `window`: sliding window size. The number of nucleotides the sliding window will span. It has the value of 200 by default.  
 `shift`: this is the step our window slides downstream the alignment. It's value is set to 50 by default.  
 `region`: the index of the potential recombinant. All the other sequences will be plotted as function of distance to that sequence.  
@@ -100,7 +100,7 @@ to save the distance data in excel or csv format use the method `write.csv`:
 ```
 write.csv(seqSim_data, file = "hbv_distance_data")
 ```
-If there are about 20 or 30 sequences in the input file and their names are long, legend element may hide the plot. So, to be able to analyze many sequences at once, it's better to use short consice sequence names instead of long ones. Like this:
+If there are about 20 or 30 sequences in the input file and their names are long, legend element may hide the plot. So, to be able to analyze many sequences at once, it's better to use short concise sequence names instead of long ones. Like this:
 
 ![](plots/short_names.png)
 
@@ -126,12 +126,12 @@ scan_data
 ```
 Print plot.
 ```
-scan_data[,5]
+data_scan[,5]
 ```
 ![](plots/hbv_scanSecSim.png)
 And recombination region matrix.
 ```
-scan_data[,6]
+data_scan[,6]
 ```
 ```
 $region_recomb_bp
