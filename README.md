@@ -2,7 +2,7 @@
 # recan
 ported version of recan Python library https://github.com/babinyurii/recan for genetic distance plotting for recombination events analysis
 ## Requirements
-***
+
 R  
 bio3d  
 combinat   
